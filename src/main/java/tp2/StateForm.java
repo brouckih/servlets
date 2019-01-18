@@ -33,7 +33,7 @@ public class StateForm extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO(DataSourceFactory.getDataSource());
-        String state = request.getParameter("state");
+        //String state = request.getParameter("state");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -43,14 +43,12 @@ public class StateForm extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet StateForm " + request.getContextPath() + "</h1>");
+            
             try{
-               // out.println("<form action='State'>");
+                out.println("<form action='ShowState' method='post'>");
                 out.println("<select>");
-                for(CustomerEntity e:dao.customersInState(state)){
-                out.println("<option value="+e.>State</option>");
-                }
-
-                for(String s : dao.customersInState()){
+                List<String> l = dao.getState();
+                for(String s : l){
                     out.println("<option value="+s+">"+s+"</option>");
                 }
                 out.println("</select>");
