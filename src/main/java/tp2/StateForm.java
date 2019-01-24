@@ -47,8 +47,7 @@ public class StateForm extends HttpServlet {
             try{
                 out.println("<form action='ShowState' method='post'>");
                 out.println("<select>");
-                List<String> l = dao.getState();
-                for(String s : l){
+                for(String s : dao.getStates){
                     out.println("<option value="+s+">"+s+"</option>");
                 }
                 out.println("</select>");
